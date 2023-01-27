@@ -2,13 +2,15 @@
 <html>
   <head>
     <title>Fabian's Portfolio</title>
-    <style>
-      body {
-        background: linear-gradient(to bottom, rgb(255,0,0), rgb(0,255,0), rgb(0,0,255));
-        color: white;
-        font-family: Arial, sans-serif;
+    <script>
+      function changeColor() {
+        var r = Math.floor(Math.random() * 256);
+        var g = Math.floor(Math.random() * 256);
+        var b = Math.floor(Math.random() * 256);
+        document.body.style.background = "rgb(" + r + "," + g + "," + b + ")";
       }
-    </style>
+      setInterval(changeColor, 3000);
+    </script>
   </head>
   <body>
     <h1>Fabian's Portfolio</h1>
