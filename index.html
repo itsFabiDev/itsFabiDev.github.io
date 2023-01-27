@@ -41,19 +41,40 @@ body {
       <li>2022-now: Student at Deutsche Telekom</li>
     </ul>
 <script>
-  // JavaScript code to create the dots
   var dotCount = 50;
-  for (var i = 0; i < dotCount; i++) {
-    var dot = document.createElement("div");
-    dot.classList.add("dot");
-    dot.style.left = Math.random() * 100 + "%";
-    dot.style.top = Math.random() * 100 + "%";
-    document.body.appendChild(dot);
+  var dots = [];
+
+  // function to create new dots
+  function createDots() {
+    dots = [];
+    for (var i = 0; i < dotCount; i++) {
+      var dot = document.createElement("div");
+      dot.classList.add("dot");
+      dot.style.left = Math.random() * 100 + "%";
+      dot.style.top = Math.random() * 100 + "%";
+      document.body.appendChild(dot);
+      dots.push(dot);
+    }
   }
 
-  // JavaScript code to add the hover effect to the dots
-  var dots = document.getElementsByClassName("dot");
-  document.addEventListener("mousemove", function(event) {
+  // function to create new lines
+  function createLines() {
+    for (var i = 0; i < dots.length; i++) {
+      var dot = dots[i];
+      var line = document.createElement("div");
+      line.classList.add("line");
+      var color = "rgb(" + Math.floor(Math.random() * 256) + "," + Math.floor(Math.random() * 256) + "," + Math.floor(Math.random() * 256) + ")";
+      line.style.background = color;
+      line.style.width = Math.random() * 20 + "px";
+      line.style.height = Math.random() * 100 + "px";
+      line.style.position = "absolute";
+      line.style.transform = "rotate(" + Math.random() * 360 + "deg)";
+      dot.appendChild(line);
+    }
+  }
+
+  // function to move dots on hover
+  function moveDots(event) {
     for (var i = 0; i < dots.length; i++) {
       var dot = dots[i];
       var dotRect = dot.getBoundingClientRect();
@@ -66,8 +87,22 @@ body {
       dot.style.transition = "transform " + speed + "s ease-out";
       dot.style.transform = "translate(" + diffX / speed + "px," + diffY / speed + "px)";
     }
+  }
+
+  createDots();
+  createLines();
+
+  document.addEventListener("mousemove", moveDots);
+  document.addEventListener("click", function() {
+    for (var i = 0; i < dots.length; i++) {
+      var dot = dots[i];
+      dot.remove();
+    }
+    createDots();
+    createLines();
   });
 </script>
+
 
 
 
