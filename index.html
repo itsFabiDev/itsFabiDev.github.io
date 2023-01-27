@@ -5,9 +5,6 @@
     <style>
       /* Center align the content */
       body {
-        display: flex;
-        align-items: center;
-        justify-content: center;
         min-height: 100vh;
         background-color: black; /* Change the background color */
         color: white; /* Change the text color */
@@ -26,13 +23,20 @@
       
       /* Style the list items and center align them */
       ul {
-        text-align: center;
+        text-align: left;
         display: flex;
         flex-direction: column;
       }
       li {
         font-size: 18px;
         margin-bottom: 20px; /* this will separate each list item vertically */
+      }
+      /* Align the header at the top center of the website */
+      h1 {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
       }
     </style>
   </head>
