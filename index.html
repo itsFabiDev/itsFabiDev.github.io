@@ -12,9 +12,10 @@
   position: absolute;
 }
 
-    body {
-      background-color: #eee;
-    }
+body {
+  background-color: black;
+}
+
     /* styling the text color */
     h1, p {
       color: #333;
@@ -61,11 +62,13 @@
       var diffX = dotRect.left - mouseX;
       var diffY = dotRect.top - mouseY;
       var distance = Math.sqrt(diffX * diffX + diffY * diffY);
-      var speed = distance / 10;
+      var speed = distance / 50;
+      dot.style.transition = speed + "s ease-out";
       dot.style.transform = "translate(" + diffX / speed + "px," + diffY / speed + "px)";
     }
   });
 </script>
+
 
   </body>
 </html>
