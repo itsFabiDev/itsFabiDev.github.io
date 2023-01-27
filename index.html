@@ -3,11 +3,15 @@
   <head>
     <title>Fabian's Portfolio</title>
     <style>
-    /* CSS styling goes here */
-    /* you can use class and id selectors to select specific elements of the HTML */
-    /* and then apply styles to them */
-    /* for example */
-    /* styling the background color */
+/* styling for the dots */
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #333;
+  position: absolute;
+}
+
     body {
       background-color: #eee;
     }
@@ -35,15 +39,33 @@
       <li>Aushilfe at Bensberger Bank</li>
       <li>2022-now: Student at Deutsche Telekom</li>
     </ul>
-    <script>
-    /* JavaScript code goes here */
-    /* you can use JavaScript to add interactivity to your website */
-    /* for example */
-    /* changing the background color on button click */
-    var button = document.getElementById("color-change-button");
-    button.addEventListener("click", function() {
-      document.body.style.backgroundColor = "rgb(" + Math.random() * 255 + "," + Math.random() * 255 + "," + Math.random() * 255 + ")";
-    });
-    </script>
+<script>
+  // JavaScript code to create the dots
+  var dotCount = 50;
+  for (var i = 0; i < dotCount; i++) {
+    var dot = document.createElement("div");
+    dot.classList.add("dot");
+    dot.style.left = Math.random() * 100 + "%";
+    dot.style.top = Math.random() * 100 + "%";
+    document.body.appendChild(dot);
+  }
+
+  // JavaScript code to add the hover effect to the dots
+  var dots = document.getElementsByClassName("dot");
+  document.addEventListener("mousemove", function(event) {
+    for (var i = 0; i < dots.length; i++) {
+      var dot = dots[i];
+      var dotRect = dot.getBoundingClientRect();
+      var mouseX = event.clientX;
+      var mouseY = event.clientY;
+      var diffX = dotRect.left - mouseX;
+      var diffY = dotRect.top - mouseY;
+      var distance = Math.sqrt(diffX * diffX + diffY * diffY);
+      var speed = distance / 10;
+      dot.style.transform = "translate(" + diffX / speed + "px," + diffY / speed + "px)";
+    }
+  });
+</script>
+
   </body>
 </html>
