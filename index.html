@@ -1,79 +1,59 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Interactive Landing Page</title>
-    <style>
-      /* styling for the canvas */
-      canvas {
-        background: #e0e0e0;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
+<head>
+  <style>
+    /* CSS for the dots */
+    .dot {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: #000;
+    }
+
+    /* CSS for the lines */
+    .line {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background-color: #000;
+    }
+  </style>
+</head>
+<body>
+  <div id="dots-container"></div>
+  <div id="content-container">
+    <!-- Your content goes here -->
+  </div>
+  <script>
+    // JavaScript for creating and positioning the dots
+    for (let i = 0; i < 50; i++) {
+      let dot = document.createElement("div");
+      dot.classList.add("dot");
+      dot.style.left = Math.random() * window.innerWidth + "px";
+      dot.style.top = Math.random() * window.innerHeight + "px";
+      document.getElementById("dots-container").appendChild(dot);
+    }
+
+    // JavaScript for detecting mouse hover and updating dot positions
+    document.addEventListener("mousemove", event => {
+      let dots = document.querySelectorAll(".dot");
+      for (let dot of dots) {
+        let dx = event.clientX - dot.offsetLeft - 5;
+        let dy = event.clientY - dot.offsetTop - 5;
+        dot.style.left = (dot.offsetLeft + dx * 0.1) + "px";
+        dot.style.top = (dot.offsetTop + dy * 0.1) + "px";
       }
-    </style>
-  </head>
-  <body>
-    <canvas id="canvas"></canvas>
-    <script>
-      // array to store the dots
-      let dots = [];
-      // canvas and context variables
-      let canvas, ctx;
-      
-      // function to create dots
-      function createDots() {
-        // loop to create a specified number of dots
-        for (let i = 0; i < 30; i++) {
-          // create a dot object with random x, y coordinates
-          let dot = {
-            x: Math.random() * window.innerWidth,
-            y: Math.random() * window.innerHeight
-          }
-          // add the dot to the dots array
-          dots.push(dot);
-        }
-      }
-      
-      // function to draw dots and connecting lines
-      function draw() {
-        // clear the canvas
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        // loop through the dots array
-        for (let i = 0; i < dots.length; i++) {
-          // draw a circle for each dot
-          ctx.beginPath();
-          ctx.arc(dots[i].x, dots[i].y, 3, 0, 2 * Math.PI);
-          ctx.fill();
-          // connect the dots to the mouse position with a line
-          ctx.beginPath();
-          ctx.moveTo(dots[i].x, dots[i].y);
-          ctx.lineTo(mouseX, mouseY);
-          ctx.stroke();
-        }
-      }
-      
-      // event listener for mouse movement
-      document.addEventListener("mousemove", (event) => {
-        // update mouseX and mouseY variables with the current mouse position
-        mouseX = event.clientX;
-        mouseY = event.clientY;
-      });
-      
-      // function to set up the canvas
-      function init() {
-        canvas = document.getElementById("canvas");
-        ctx = canvas.getContext("2d");
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-        createDots();
-        // call the draw function every 10 milliseconds
-        setInterval(draw, 10);
-      }
-      
-      // call the init function when the window loads
-      window.onload = init;
-    </script>
-  </body>
+    });
+
+    // JavaScript for creating and positioning the lines
+    for (let i = 0; i < 50; i++) {
+      let line = document.createElement("div");
+      line.classList.add("line");
+      line.style.left = Math.random() * window.innerWidth + "px";
+      line.style.top = Math.random() * window.innerHeight + "px";
+      document.getElementById("dots-container").appendChild(line);
+    }
+  </script>
+</body>
 </html>
