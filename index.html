@@ -1,59 +1,21 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <style>
-    /* CSS for the dots */
-    .dot {
-      position: absolute;
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background-color: #000;
-    }
-
-    /* CSS for the lines */
-    .line {
-      position: absolute;
-      width: 2px;
-      height: 2px;
-      background-color: #000;
-    }
-  </style>
-</head>
-<body>
-  <div id="dots-container"></div>
-  <div id="content-container">
-    <!-- Your content goes here -->
-  </div>
-  <script>
-    // JavaScript for creating and positioning the dots
-    for (let i = 0; i < 50; i++) {
-      let dot = document.createElement("div");
-      dot.classList.add("dot");
-      dot.style.left = Math.random() * window.innerWidth + "px";
-      dot.style.top = Math.random() * window.innerHeight + "px";
-      document.getElementById("dots-container").appendChild(dot);
-    }
-
-    // JavaScript for detecting mouse hover and updating dot positions
-    document.addEventListener("mousemove", event => {
-      let dots = document.querySelectorAll(".dot");
-      for (let dot of dots) {
-        let dx = event.clientX - dot.offsetLeft - 5;
-        let dy = event.clientY - dot.offsetTop - 5;
-        dot.style.left = (dot.offsetLeft + dx * 0.1) + "px";
-        dot.style.top = (dot.offsetTop + dy * 0.1) + "px";
-      }
-    });
-
-    // JavaScript for creating and positioning the lines
-    for (let i = 0; i < 50; i++) {
-      let line = document.createElement("div");
-      line.classList.add("line");
-      line.style.left = Math.random() * window.innerWidth + "px";
-      line.style.top = Math.random() * window.innerHeight + "px";
-      document.getElementById("dots-container").appendChild(line);
-    }
-  </script>
-</body>
+  <head>
+    <title>About Me</title>
+  </head>
+  <body>
+    <h1>About Me</h1>
+    <p>My name is [Your Name]. I am currently 18 years old and I am a Developer.</p>
+    <p>I have a passion for Gaming. In my free time, I enjoy Gaming, Programming.</p>
+    <p>I am also a big fan of watching Netflix.</p>
+    <h2>Education</h2>
+    <ul>
+      <li>2014-2022 Abitur</li>
+      <li>2022-now Studium</li>
+    </ul>
+    <h2>Work Experience</h2>
+    <ul>
+      <li>Student@DeutscheTelekom</li>
+    </ul>
+  </body>
 </html>
