@@ -1,23 +1,24 @@
 <!DOCTYPE html>
 <html>
-    <head>
+  <head>
     <title>Fabian's Portfolio</title>
     <style>
-      /* create dots */
-      .dot {
-        position: absolute;
-        width: 5px;
-        height: 5px;
-        border-radius: 50%;
-        background-color: white;
-      }
-      /* create lines connecting dots */
-      .line {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        background-color: white;
-      }
+    /* CSS styling goes here */
+    /* you can use class and id selectors to select specific elements of the HTML */
+    /* and then apply styles to them */
+    /* for example */
+    /* styling the background color */
+    body {
+      background-color: #eee;
+    }
+    /* styling the text color */
+    h1, p {
+      color: #333;
+    }
+    /* styling the links color */
+    a {
+      color: blue;
+    }
     </style>
   </head>
   <body>
@@ -35,36 +36,14 @@
       <li>2022-now: Student at Deutsche Telekom</li>
     </ul>
     <script>
-      // create dots
-      for (var i = 0; i < 50; i++) {
-        var dot = document.createElement("div");
-        dot.classList.add("dot");
-        dot.style.left = Math.random() * 100 + "%";
-        dot.style.top = Math.random() * 100 + "%";
-        document.body.appendChild(dot);
-      }
-      // create lines connecting dots
-      var dots = document.getElementsByClassName("dot");
-      for (var i = 0; i < dots.length; i++) {
-        for (var j = 0; j < dots.length; j++) {
-          if (i != j) {
-            var line = document.createElement("div");
-            line.classList.add("line");
-            line.style.left = dots[i].offsetLeft + "px";
-            line.style.top = dots[i].offsetTop + "px";
-            line.style.width = dots[j].offsetLeft - dots[i].offsetLeft + "px";
-            line.style.height = dots[j].offsetTop - dots[i].offsetTop + "px";
-            document.body.appendChild(line);
-          }
-        }
-      }
-      // make dots follow mouse cursor
-      document.addEventListener("mousemove", function(event) {
-        for (var i = 0; i < dots.length; i++) {
-          dots[i].style.left = dots[i].offsetLeft + (event.clientX - dots[i].offsetLeft) * 0.05 + "px";
-          dots[i].style.top = dots[i].offsetTop + (event.clientY - dots[i].offsetTop) * 0.05 + "px";
-        }
-      });
+    /* JavaScript code goes here */
+    /* you can use JavaScript to add interactivity to your website */
+    /* for example */
+    /* changing the background color on button click */
+    var button = document.getElementById("color-change-button");
+    button.addEventListener("click", function() {
+      document.body.style.backgroundColor = "rgb(" + Math.random() * 255 + "," + Math.random() * 255 + "," + Math.random() * 255 + ")";
+    });
     </script>
   </body>
 </html>
